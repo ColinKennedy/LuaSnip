@@ -208,9 +208,11 @@ local function in_snippet()
 		return
 	end
 	local pos = vim.api.nvim_win_get_cursor(0)
-	if pos[1] - 1 >= snip_begin_pos[1] and pos[1] - 1 <= snip_end_pos[1] then
+	if pos[1] - 1 >= snip_begin_pos[1] and pos[1] - 1 < snip_end_pos[1] then
 		return true -- cursor not on row inside snippet
 	end
+
+	return false
 end
 
 local function expand_or_locally_jumpable()
